@@ -1,0 +1,6 @@
+base_url: "https://automationexercise.com"
+default_timeout_ms: 10000
+locale: "en-US"
+viewport:
+  width: 1280
+  height: 720
