@@ -6,6 +6,9 @@ from pages.components.cookie_component import CookieComponent
 from pages.home_page import HomePage
 from pages.login_page import LoginPage
 from pages.signup_page import SignupPage
+from pages.account_creation_confirmation_page import AccountCreationConfirmationPage
+from pages.account_delete_confirmation_page import AccountDeleteConfirmationPage
+from utils.data_generator import generate_user_data
 
 
 @pytest.fixture(scope="session")
@@ -43,3 +46,15 @@ def login_page(page: Page) -> LoginPage:
 @pytest.fixture
 def signup_page(page: Page) -> SignupPage:
     return SignupPage(page)
+
+@pytest.fixture
+def account_creation_confirmation_page(page: Page) -> AccountCreationConfirmationPage:
+    return AccountCreationConfirmationPage(page)
+
+@pytest.fixture
+def account_delete_confirmation_page(page: Page) -> AccountDeleteConfirmationPage:
+    return AccountDeleteConfirmationPage(page)
+
+@pytest.fixture
+def new_user_data() -> dict:
+    return generate_user_data()

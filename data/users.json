@@ -1,0 +1,23 @@
+{
+    "register": {
+        "title": "Mr.",
+        "password": "testpass",
+        "date_of_birth": {
+            "day": "10",
+            "month": "January",
+            "year": "1999"
+        },
+        "address": {
+            "first_name": "TestFN",
+            "last_name": "TestLN",
+            "company": "TestCompany",
+            "line_1": "210 West",
+            "line_2": "Fork Drive",
+            "country": "United States",
+            "state": "Ohio",
+            "city": "Barlow",
+            "zipcode": "45729",
+            "mobile_number": "+14401476925"
+        }
+    }
+}
