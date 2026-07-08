@@ -21,7 +21,7 @@ This project provides automated UI tests for the Automation Exercise sample stor
 
 ### Prerequisites
 
-- Python 3.8 or higher
+- Python 3.11 or higher
 - Git
 
 ### Installation
