@@ -8,7 +8,7 @@ from pages.login_page import LoginPage
 from pages.signup_page import SignupPage
 from pages.account_creation_confirmation_page import AccountCreationConfirmationPage
 from pages.account_delete_confirmation_page import AccountDeleteConfirmationPage
-from utils.data_generator import generate_user_data
+from utils.data_generator import generate_new_user_data, get_correct_login_data
 
 
 @pytest.fixture(scope="session")
@@ -57,4 +57,8 @@ def account_delete_confirmation_page(page: Page) -> AccountDeleteConfirmationPag
 
 @pytest.fixture
 def new_user_data() -> dict:
-    return generate_user_data()
+    return generate_new_user_data()
+
+@pytest.fixture
+def correct_login_data() -> dict:
+    return get_correct_login_data()

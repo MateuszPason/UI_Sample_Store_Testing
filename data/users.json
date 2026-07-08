@@ -19,5 +19,9 @@
             "zipcode": "45729",
             "mobile_number": "+14401476925"
         }
-    }
+    },
+    "correct_login_data": {
+        "email": "automationtestingexercise@testing.com",
+        "password": "automationtestingpassword"
+    }   
 }
