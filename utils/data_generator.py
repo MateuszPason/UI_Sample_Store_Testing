@@ -16,3 +16,7 @@ def generate_new_user_data() -> dict:
 def get_correct_login_data() -> dict:
     with open(DATA_DIR / "users.json") as f:
         return json.load(f)["correct_login_data"]
+
+def get_form_data() -> dict:
+    with open(DATA_DIR / "form.json") as f:
+        return json.load(f)["contact_us"]
