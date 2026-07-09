@@ -12,6 +12,7 @@ class LoginPage(BasePage):
         self.signup_form_heading = self.page.get_by_role("heading", name="New User Signup!")
         self.login_form_heading = self.page.get_by_role("heading", name="Login to your account")
         self.error_login_paragraph = self.page.get_by_text("Your email or password is incorrect!")
+        self.error_signup_paragraph = self.page.get_by_text("Email Address already exist!")
         self._signup_name_input = self.page.get_by_test_id("signup-name")
         self._signup_email_input = self.page.get_by_test_id("signup-email")
         self._signup_button = self.page.get_by_role("button", name="Signup")
