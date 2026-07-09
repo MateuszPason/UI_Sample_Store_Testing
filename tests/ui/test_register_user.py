@@ -20,3 +20,18 @@ class TestRegister:
         signup_page.submit_registration_form()
 
         expect(account_creation_confirmation_page.confirmation_heading).to_be_visible()
+
+    def test_register_existing_email(self, page, config, header, cookie_modal, home_page, login_page, correct_login_data):
+        home_page.goto(config["base_url"])
+
+        expect(page).to_have_url(f"{config['base_url']}{home_page.PATH}")
+
+        cookie_modal.accept_default_value()
+        header.go_to_login()
+
+        expect(login_page.signup_form_heading).to_be_visible()
+
+        login_page.complete_new_user_data_form(correct_login_data)
+        login_page.submit_new_user_data_form()
+
+        expect(login_page.error_signup_paragraph).to_be_visible()

@@ -22,6 +22,7 @@
     },
     "correct_login_data": {
         "email": "automationtestingexercise@testing.com",
-        "password": "automationtestingpassword"
+        "password": "automationtestingpassword",
+        "name": "AutomationTestingExercise"
     }   
 }
