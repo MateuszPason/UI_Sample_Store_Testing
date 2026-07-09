@@ -8,7 +8,8 @@ from pages.login_page import LoginPage
 from pages.signup_page import SignupPage
 from pages.account_creation_confirmation_page import AccountCreationConfirmationPage
 from pages.account_delete_confirmation_page import AccountDeleteConfirmationPage
-from utils.data_generator import generate_new_user_data, get_correct_login_data
+from pages.contact_form_page import ContactFormPage
+from utils.data_generator import generate_new_user_data, get_correct_login_data, get_form_data
 
 
 @pytest.fixture(scope="session")
@@ -48,6 +49,10 @@ def signup_page(page: Page) -> SignupPage:
     return SignupPage(page)
 
 @pytest.fixture
+def contact_us_page(page: Page) -> ContactFormPage:
+    return ContactFormPage(page)
+
+@pytest.fixture
 def account_creation_confirmation_page(page: Page) -> AccountCreationConfirmationPage:
     return AccountCreationConfirmationPage(page)
 
@@ -62,3 +67,7 @@ def new_user_data() -> dict:
 @pytest.fixture
 def correct_login_data() -> dict:
     return get_correct_login_data()
+
+@pytest.fixture
+def get_contact_form_data() -> dict:
+    return get_form_data()
