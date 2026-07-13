@@ -9,6 +9,7 @@ class HeaderComponent:
         self.delete_account_button_link = self.page.get_by_role("link", name="Delete Account")
         self.logout_link = self.page.get_by_role("link", name="Logout")
         self.contact_us_link = self.page.get_by_role("link", name="Contact us")
+        self.test_cases_link = self.page.locator("ul.nav a:has-text('Test Cases')")
 
     def go_to_login(self) -> None:
         self.login_signup_link.click()
@@ -18,3 +19,6 @@ class HeaderComponent:
 
     def go_to_contact_us_form(self) -> None:
         self.contact_us_link.click()
+
+    def go_to_test_cases_page(self) -> None:
+        self.test_cases_link.click()
