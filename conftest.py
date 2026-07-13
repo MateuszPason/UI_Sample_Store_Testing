@@ -10,6 +10,8 @@ from pages.account_creation_confirmation_page import AccountCreationConfirmation
 from pages.account_delete_confirmation_page import AccountDeleteConfirmationPage
 from pages.contact_form_page import ContactFormPage
 from pages.test_cases_page import TestCasesPage
+from pages.products_listing_page import ProductListingPage
+from pages.products_details_page import ProductDetailsPage
 from utils.data_generator import generate_new_user_data, get_correct_login_data, get_form_data
 
 
@@ -64,6 +66,14 @@ def account_delete_confirmation_page(page: Page) -> AccountDeleteConfirmationPag
 @pytest.fixture
 def test_cases_page(page: Page) -> TestCasesPage:
     return TestCasesPage(page)
+
+@pytest.fixture
+def product_listing_page(page: Page) -> ProductListingPage:
+    return ProductListingPage(page)
+
+@pytest.fixture
+def product_details_page(page: Page) -> ProductDetailsPage:
+    return ProductDetailsPage(page)
 
 @pytest.fixture
 def new_user_data() -> dict:
