@@ -9,7 +9,7 @@ from pages.signup_page import SignupPage
 from pages.account_creation_confirmation_page import AccountCreationConfirmationPage
 from pages.account_delete_confirmation_page import AccountDeleteConfirmationPage
 from pages.contact_form_page import ContactFormPage
-from pages.test_cases_page import TestCasesPage
+from pages.tst_cases_page import TestCasesPage
 from pages.products_listing_page import ProductListingPage
 from pages.products_details_page import ProductDetailsPage
 from utils.data_generator import generate_new_user_data, get_correct_login_data, get_form_data

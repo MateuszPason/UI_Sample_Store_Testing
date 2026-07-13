@@ -16,7 +16,7 @@ class ContactFormPage(BasePage):
         self.message_input = self.page.get_by_test_id("message")
         self.file_input = self.page.locator("input[name='upload_file']")
         self.submit_form_button = self.page.get_by_test_id("submit-button")
-        self.success_message = self.page.locator("div.status.alert.alert-success").filter(has_text="Success! Your details have been submitted successfully.")
+        self.success_message = self.page.locator("#contact-page div.status.alert.alert-success")
         self.home_button = self.page.locator("a.btn.btn-success").filter(has_text="Home")
 
     def complete_contact_us_form(self, form_data: dict) -> None:
