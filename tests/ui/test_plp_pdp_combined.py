@@ -2,7 +2,7 @@ from playwright.sync_api import expect
 
 class TestProductListingProductDetails:
     def test_product_listing_product_detail_progression(self, page, home_page, config, header, cookie_modal, product_listing_page, product_details_page):
-        home_page.goto(f"{config['base_url']}")
+        home_page.goto()
         expect(page).to_have_url(f"{config['base_url']}{home_page.PATH}")
 
         cookie_modal.accept_default_value()

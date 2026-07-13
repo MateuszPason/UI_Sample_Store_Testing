@@ -2,7 +2,7 @@ from playwright.sync_api import expect
 
 class TestRegister:
     def test_successful_user_register(self, page, config, header, cookie_modal, home_page, login_page, signup_page, new_user_data, account_creation_confirmation_page):
-        home_page.goto(config["base_url"])
+        home_page.goto()
 
         expect(page).to_have_url(f"{config["base_url"]}{home_page.PATH}")
         
@@ -22,7 +22,7 @@ class TestRegister:
         expect(account_creation_confirmation_page.confirmation_heading).to_be_visible()
 
     def test_register_existing_email(self, page, config, header, cookie_modal, home_page, login_page, correct_login_data):
-        home_page.goto(config["base_url"])
+        home_page.goto()
 
         expect(page).to_have_url(f"{config['base_url']}{home_page.PATH}")
 

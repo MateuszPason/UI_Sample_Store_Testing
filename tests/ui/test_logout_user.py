@@ -2,7 +2,7 @@ from playwright.sync_api import expect
 
 class TestLogout:
     def test_user_logout(self, page, home_page, config, cookie_modal, login_page, header, correct_login_data):
-        home_page.goto(config["base_url"])
+        home_page.goto()
         expect(page).to_have_url(f"{config['base_url']}{home_page.PATH}")
 
         cookie_modal.accept_default_value()

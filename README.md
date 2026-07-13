@@ -114,7 +114,7 @@ pytest -vv -s
 def test_successful_user_register(self, page, config, header, cookie_modal, 
                                    home_page, login_page, signup_page, 
                                    new_user_data, account_creation_confirmation_page):
-    home_page.goto(config["base_url"])
+    home_page.goto()
     cookie_modal.accept_default_value()
     header.go_to_login()
     login_page.complete_new_user_data_form(new_user_data)

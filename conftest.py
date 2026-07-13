@@ -40,8 +40,8 @@ def cookie_modal(page: Page) -> CookieComponent:
     return CookieComponent(page)
 
 @pytest.fixture
-def home_page(page: Page) -> HomePage:
-    return HomePage(page)
+def home_page(page: Page, config: dict) -> HomePage:
+    return HomePage(page, config["base_url"])
 
 @pytest.fixture
 def login_page(page: Page) -> LoginPage:

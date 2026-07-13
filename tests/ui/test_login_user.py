@@ -33,7 +33,7 @@ class TestLogin:
         login_scenarios_data = build_login_scenarios_data(correct_login_data)
         scenario = login_scenarios_data[scenario_key]
 
-        home_page.goto(config["base_url"])
+        home_page.goto()
 
         expect(page).to_have_url(f"{config['base_url']}{home_page.PATH}")
 
