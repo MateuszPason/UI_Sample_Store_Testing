@@ -12,7 +12,7 @@ from pages.contact_form_page import ContactFormPage
 from pages.tst_cases_page import TestCasesPage
 from pages.products_listing_page import ProductListingPage
 from pages.products_details_page import ProductDetailsPage
-from utils.data_generator import generate_new_user_data, get_correct_login_data, get_form_data
+from utils.data_generator import generate_new_user_data, get_correct_login_data, get_form_data, get_search_data
 
 
 @pytest.fixture(scope="session")
@@ -86,3 +86,7 @@ def correct_login_data() -> dict:
 @pytest.fixture
 def get_contact_form_data() -> dict:
     return get_form_data()
+
+@pytest.fixture
+def get_search_term_data() -> dict:
+    return get_search_data()

@@ -1,0 +1,12 @@
+{
+    "scenarios": {
+        "valid_term": {
+            "term": "Jeans",
+            "expect_results": true
+        },
+        "invalid_term": {
+            "term": "abcdefgh",
+            "expect_results": false
+        }
+    }
+}
