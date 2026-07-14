@@ -20,3 +20,7 @@ def get_correct_login_data() -> dict:
 def get_form_data() -> dict:
     with open(DATA_DIR / "form.json") as f:
         return json.load(f)["contact_us"]
+
+def get_search_data() -> dict:
+    with open(DATA_DIR / "search.json") as f:
+        return json.load(f)["scenarios"]
