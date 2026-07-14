@@ -1,137 +1,94 @@
 # Automation Exercise Sample Store Testing
 
-A comprehensive UI test automation suite for the [Automation Exercise](https://automationexercise.com) e-commerce platform, demonstrating modern testing best practices using Playwright and pytest.
+UI test automation for the live [Automation Exercise](https://automationexercise.com) sample store, built with Playwright's Python sync API and pytest. The suite exercises real user journeys against the public site and uses the Page Object Model to keep selectors and interactions maintainable.
 
 ## What This Project Does
 
-This project provides automated UI tests for the Automation Exercise sample store, covering critical user journeys including user registration, login, account management, and account deletion. It showcases professional test automation practices using industry-standard tools and patterns.
+This repository validates core storefront and account flows on Automation Exercise, including:
 
-## Key Features
+- User registration with unique test data
+- Login success and negative login scenarios
+- Logout flow
+- Contact Us form submission
+- Products listing to product details navigation
+- Product search with matching and no-result cases
+- Test Cases page navigation and visibility checks
 
-- **Page Object Model (POM)** architecture for maintainable test code
-- **Playwright** for reliable cross-browser automation
-- **Pytest** framework with data-driven testing capabilities
-- **Component-based testing** for reusable UI interactions
-- **Fixture-based test setup** for clean, DRY test code
-- **Parameterized tests** for comprehensive scenario coverage
-- **YAML configuration** for environment and browser settings
-- **Dynamic test data generation** with UUID-based unique identifiers
+The tests run directly against the live site, so there is no local application server to start.
+
+## Why This Project Is Useful
+
+- Demonstrates a practical Playwright + pytest automation stack in Python
+- Uses page objects and reusable components for cleaner, scalable test code
+- Separates static test data, generated data, and runtime configuration
+- Shows how to cover both positive and negative UI scenarios with pytest parametrization
+- Provides a compact reference project for portfolio work, practice, or framework bootstrapping
 
 ## Getting Started
 
 ### Prerequisites
 
-- Python 3.11 or higher
+- Python 3.11 or newer
 - Git
+- Internet access to [automationexercise.com](https://automationexercise.com)
 
 ### Installation
 
-1. **Clone the repository:**
-   ```bash
-   git clone <repository-url>
-   cd AutomationExerciseSampleStoreTesting
-   ```
-
-2. **Create a virtual environment:**
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-   ```
-
-3. **Install dependencies:**
-   ```bash
-   pip install playwright pytest pyyaml
-   playwright install
-   ```
-
-4. **Verify installation:**
-   ```bash
-   pytest --version
-   ```
-
-### Project Structure
-
-```
-AutomationExerciseSampleStoreTesting/
-├── config/                    # Configuration files
-│   ├── config_reader.py      # Config loader
-│   ├── paths.py              # Path utilities
-│   └── settings.yaml         # Browser and test settings
-├── data/                      # Test data
-│   └── users.json            # User credentials and registration data
-├── pages/                     # Page Object Models
-│   ├── base_page.py          # Base class for all pages
-│   ├── home_page.py          # Home page object
-│   ├── login_page.py         # Login page object
-│   ├── signup_page.py        # Signup page object
-│   ├── account_creation_confirmation_page.py
-│   ├── account_delete_confirmation_page.py
-│   └── components/           # Reusable UI components
-│       ├── header_component.py
-│       └── cookie_component.py
-├── tests/                     # Test cases
-│   └── ui/
-│       ├── test_login_user.py
-│       └── test_register_user.py
-├── utils/                     # Utility functions
-│   └── data_generator.py     # Test data generators
-├── conftest.py               # Pytest fixtures and configuration
-└── pytest.ini                # Pytest configuration
-```
-
-### Running Tests
-
-**Run all tests:**
 ```bash
+git clone https://github.com/MateuszPason/UI_Sample_Store_Testing.git
+cd UI_Sample_Store_Testing
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+playwright install chromium
+```
+
+On Windows PowerShell, activate the environment with:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+### Quick Verification
+
+```bash
+source .venv/bin/activate
+pytest --collect-only -q
+```
+
+### Running the Test Suite
+
+Run everything:
+
+```bash
+source .venv/bin/activate
 pytest
 ```
 
-**Run specific test file:**
+Run a single file:
+
 ```bash
-pytest tests/ui/test_login_user.py
+source .venv/bin/activate
+pytest tests/ui/test_search.py
 ```
 
-**Run specific test class or method:**
+Run a single test:
+
 ```bash
-pytest tests/ui/test_login_user.py::TestLogin
-pytest tests/ui/test_login_user.py::TestLogin::test_login_variants
+source .venv/bin/activate
+pytest tests/ui/test_login_user.py::TestLogin::test_login_variants -v
 ```
 
-**Run with verbose output:**
-```bash
-pytest -v
-```
+Run with verbose output:
 
-**Run with detailed output and capture disabled:**
 ```bash
+source .venv/bin/activate
 pytest -vv -s
 ```
 
-### Test Examples
-
-#### User Registration Test
-```python
-def test_successful_user_register(self, page, config, header, cookie_modal, 
-                                   home_page, login_page, signup_page, 
-                                   new_user_data, account_creation_confirmation_page):
-    home_page.goto()
-    cookie_modal.accept_default_value()
-    header.go_to_login()
-    login_page.complete_new_user_data_form(new_user_data)
-    login_page.submit_new_user_data_form()
-    signup_page.complete_registration_form(new_user_data)
-    signup_page.submit_registration_form()
-```
-
-#### User Login Test (Parameterized)
-```bash
-pytest tests/ui/test_login_user.py::TestLogin::test_login_variants -v
-```
-This runs 4 scenarios: valid credentials, invalid email, invalid password, and both invalid.
-
 ### Configuration
 
-Edit `config/settings.yaml` to customize test settings:
+Runtime settings live in [config/settings.yaml](config/settings.yaml).
 
 ```yaml
 base_url: "https://automationexercise.com"
@@ -144,95 +101,69 @@ viewport:
 
 ### Test Data
 
-Test user credentials and registration data are defined in `data/users.json`:
+- [data/users.json](data/users.json) stores registration defaults and known-good login credentials.
+- [data/form.json](data/form.json) and [data/contact_us_form.txt](data/contact_us_form.txt) support the contact form scenario.
+- [data/search.json](data/search.json) contains valid and invalid search terms.
+- [utils/data_generator.py](utils/data_generator.py) generates unique registration identities per run.
 
-```json
-{
-    "register": {
-        "title": "Mr.",
-        "password": "testpass",
-        "address": { ... }
-    },
-    "correct_login_data": {
-        "email": "automationtestingexercise@testing.com",
-        "password": "automationtestingpassword"
-    }
-}
+## Project Structure
+
+```text
+.
+|-- config/
+|   |-- config_reader.py
+|   |-- paths.py
+|   `-- settings.yaml
+|-- data/
+|   |-- contact_us_form.txt
+|   |-- form.json
+|   |-- search.json
+|   `-- users.json
+|-- pages/
+|   |-- account_creation_confirmation_page.py
+|   |-- account_delete_confirmation_page.py
+|   |-- base_page.py
+|   |-- contact_form_page.py
+|   |-- home_page.py
+|   |-- login_page.py
+|   |-- products_details_page.py
+|   |-- products_listing_page.py
+|   |-- signup_page.py
+|   |-- tst_cases_page.py
+|   `-- components/
+|       |-- cookie_component.py
+|       `-- header_component.py
+|-- tests/
+|   `-- ui/
+|       |-- test_contact_us_form.py
+|       |-- test_login_user.py
+|       |-- test_logout_user.py
+|       |-- test_plp_pdp_combined.py
+|       |-- test_register_user.py
+|       |-- test_search.py
+|       `-- test_test_cases.py
+|-- utils/
+|   `-- data_generator.py
+|-- conftest.py
+|-- pytest.ini
+|-- README.md
+`-- requirements.txt
 ```
 
-New registration tests automatically generate unique email addresses using `data_generator.py`.
+## Test Architecture
 
-## Technical Details
+The suite follows a straightforward Page Object Model:
 
-### Page Object Model
+- Page classes in [pages](pages) encapsulate page-specific locators and actions.
+- Shared UI pieces such as the header and cookie consent are modeled under [pages/components](pages/components).
+- Fixtures in [conftest.py](conftest.py) create page objects, components, config, and data for tests.
+- Playwright is configured to treat `data-qa` as the test-id attribute, which matches the target site markup.
 
-Each page has a corresponding Page Object class that encapsulates page-specific selectors and interactions:
+## Help and Documentation
 
-```python
-class LoginPage(BasePage):
-    def complete_new_user_data_form(self, user_data: dict):
-        # Implementation
-        pass
-    
-    def submit_new_user_data_form(self):
-        # Implementation
-        pass
-```
-
-### Fixtures
-
-Pytest fixtures provide reusable test setup:
-
-- `page` - Playwright page object
-- `header` - Header component instance
-- `cookie_modal` - Cookie consent modal component
-- `home_page`, `login_page`, `signup_page` - Page objects
-- `config` - Test configuration
-- `new_user_data` - Randomly generated user data
-- `correct_login_data` - Pre-configured login credentials
-
-### Components
-
-Reusable UI components abstract common interactions:
-
-```python
-# HeaderComponent
-class HeaderComponent(BasePage):
-    def go_to_login(self):
-        # Navigate to login
-        pass
-
-# CookieComponent
-class CookieComponent(BasePage):
-    def accept_default_value(self):
-        # Accept cookies
-        pass
-```
-
-## Support & Documentation
-
-- **Playwright Documentation**: https://playwright.dev/python/
-- **Pytest Documentation**: https://docs.pytest.org/
-- **Automation Exercise**: https://automationexercise.com
-- **Page Object Model Pattern**: https://playwright.dev/python/docs/pom
-
-
-### Code Guidelines
-
-- Follow PEP 8 style guidelines
-- Use descriptive test names following the pattern `test_<action>_<expected_result>`
-- Keep Page Object methods focused and single-responsibility
-- Add docstrings to complex test logic
-- Maintain fixture reusability and avoid duplication
-
-## Maintainer
-
-Created as part of the Automation Projects Portfolio.
-
-## License
-
-This project is provided as-is for educational and testing purposes.
-
----
-
-**Happy Testing! 🚀**
+- Use the GitHub Issues tab in this repository for bugs, questions, or suggested improvements.
+- See [README.md](README.md) for setup and execution basics.
+- See [.github/copilot-instructions.md](.github/copilot-instructions.md) for contributor-oriented project conventions and testing notes.
+- Playwright Python docs: [https://playwright.dev/python/](https://playwright.dev/python/)
+- Pytest docs: [https://docs.pytest.org/](https://docs.pytest.org/)
+- Automation Exercise site: [https://automationexercise.com/](https://automationexercise.com/)
