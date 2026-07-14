@@ -11,6 +11,7 @@ class HeaderComponent:
         self.contact_us_link = self.page.get_by_role("link", name="Contact us")
         self.test_cases_link = self.page.locator("ul.nav a:has-text('Test Cases')")
         self.products_link = self.page.get_by_role("link", name="Products")
+        self.cart_link = self.page.get_by_role("link", name="Cart")
 
     def go_to_login(self) -> None:
         self.login_signup_link.click()
@@ -26,3 +27,6 @@ class HeaderComponent:
 
     def go_to_products_listing(self) -> None:
         self.products_link.click()
+
+    def go_to_cart(self) -> None:
+        self.cart_link.click()
