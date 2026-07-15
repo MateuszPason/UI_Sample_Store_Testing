@@ -4,7 +4,8 @@ from playwright.sync_api import Playwright, Page
 from pages.components.header_component import HeaderComponent
 from pages.components.cookie_component import CookieComponent
 from pages.components.footer_component import FooterComponent
-from pages.components.basket_component import BasketComponent
+from pages.basket_page import BasketPage
+from pages.components.cart_modal_component import CartModalComponent
 from pages.home_page import HomePage
 from pages.login_page import LoginPage
 from pages.signup_page import SignupPage
@@ -42,12 +43,16 @@ def footer(page: Page) -> FooterComponent:
     return FooterComponent(page)
 
 @pytest.fixture
-def basket(page: Page) -> BasketComponent:
-    return BasketComponent(page)
+def basket(page: Page) -> BasketPage:
+    return BasketPage(page)
 
 @pytest.fixture
 def cookie_modal(page: Page) -> CookieComponent:
     return CookieComponent(page)
+
+@pytest.fixture
+def cart_modal(page: Page) -> CartModalComponent:
+    return CartModalComponent(page)
 
 @pytest.fixture
 def home_page(page: Page, config: dict) -> HomePage:
