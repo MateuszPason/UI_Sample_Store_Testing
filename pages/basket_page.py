@@ -9,6 +9,7 @@ class BasketPage(BasePage):
         super().__init__(page)
 
         self.cart_table = self.page.locator("#cart_info_table")
+        self.empty_cart_message = self.page.get_by_text("Cart is empty!")
 
         self.cart_row_price = ".cart_price"
         self.cart_row_quantity = ".cart_quantity"
@@ -25,3 +26,6 @@ class BasketPage(BasePage):
 
     def get_nth_product_row_total_locator(self, row_number: int) -> Locator:
         return self.get_product_row_by_row_number(row_number).locator(self.cart_row_total)
+
+    def remove_nth_product_row_from_basket(self, row_number: int) -> None:
+        self.cart_table.locator(f"[data-product-id='{row_number}']").click()
