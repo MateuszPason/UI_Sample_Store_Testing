@@ -24,3 +24,12 @@ class ProductDetailsPage(BasePage):
         self.product_brand = self.product_information.locator(
             "p", has_text=re.compile(r"^Brand:\s*.+$")
         )
+        self.product_quantity_input = self.page.locator("#quantity")
+        self.add_to_cart_button = self.page.get_by_role("button", name="Add to cart")
+
+    def change_product_quantity(self, expected_quantity: str) -> None:
+        self.product_quantity_input.clear()
+        self.product_quantity_input.fill(expected_quantity)
+
+    def add_product_to_cart(self) -> None:
+        self.add_to_cart_button.click()
