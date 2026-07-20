@@ -10,3 +10,6 @@ class AccountCreationConfirmationPage(BasePage):
 
         self.confirmation_heading = self.page.get_by_role("heading", name="Account Created!")
         self.continue_button = self.page.get_by_test_id("continue-button")
+
+    def continue_from_confirmation_page(self) -> None:
+        self.continue_button.click()

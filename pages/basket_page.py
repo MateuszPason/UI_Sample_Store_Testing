@@ -10,6 +10,7 @@ class BasketPage(BasePage):
 
         self.cart_table = self.page.locator("#cart_info_table")
         self.empty_cart_message = self.page.get_by_text("Cart is empty!")
+        self.proceed_to_checkout_button = self.page.locator("a.btn.btn-default.check_out", has_text="Proceed To Checkout")
 
         self.cart_row_price = ".cart_price"
         self.cart_row_quantity = ".cart_quantity"
@@ -29,3 +30,6 @@ class BasketPage(BasePage):
 
     def remove_nth_product_row_from_basket(self, row_number: int) -> None:
         self.cart_table.locator(f"[data-product-id='{row_number}']").click()
+
+    def go_to_checkout(self) -> None:
+        self.proceed_to_checkout_button.click()

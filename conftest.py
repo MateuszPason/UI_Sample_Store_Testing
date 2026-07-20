@@ -6,6 +6,7 @@ from pages.components.cookie_component import CookieComponent
 from pages.components.footer_component import FooterComponent
 from pages.basket_page import BasketPage
 from pages.components.cart_modal_component import CartModalComponent
+from pages.components.checkout_register_login_modal_component import CheckoutRegisterLoginModalComponent
 from pages.home_page import HomePage
 from pages.login_page import LoginPage
 from pages.signup_page import SignupPage
@@ -43,7 +44,7 @@ def footer(page: Page) -> FooterComponent:
     return FooterComponent(page)
 
 @pytest.fixture
-def basket(page: Page) -> BasketPage:
+def basket_page(page: Page) -> BasketPage:
     return BasketPage(page)
 
 @pytest.fixture
@@ -53,6 +54,10 @@ def cookie_modal(page: Page) -> CookieComponent:
 @pytest.fixture
 def cart_modal(page: Page) -> CartModalComponent:
     return CartModalComponent(page)
+
+@pytest.fixture
+def checkout_register_login_modal(page: Page) -> CheckoutRegisterLoginModalComponent:
+    return CheckoutRegisterLoginModalComponent(page)
 
 @pytest.fixture
 def home_page(page: Page, config: dict) -> HomePage:

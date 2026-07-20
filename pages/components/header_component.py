@@ -5,7 +5,7 @@ class HeaderComponent:
         self.page = page
 
         self.login_signup_link = self.page.get_by_role("link", name="Signup / Login")
-        self.logged_in_user_name = self.page.get_by_text("Logged in as")
+        self.logged_in_user_name = self.page.locator("ul.nav li", has_text="Logged in as")
         self.delete_account_button_link = self.page.get_by_role("link", name="Delete Account")
         self.logout_link = self.page.get_by_role("link", name="Logout")
         self.contact_us_link = self.page.get_by_role("link", name="Contact us")
@@ -30,3 +30,6 @@ class HeaderComponent:
 
     def go_to_cart(self) -> None:
         self.cart_link.click()
+
+    def get_username(self) -> str:
+        return self.logged_in_user_name.inner_text().strip()
