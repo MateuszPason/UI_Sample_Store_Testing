@@ -33,3 +33,6 @@ class HeaderComponent:
 
     def get_username(self) -> str:
         return self.logged_in_user_name.inner_text().strip()
+
+    def delete_account(self) -> None:
+        self.delete_account_button_link.click()
