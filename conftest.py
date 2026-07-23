@@ -6,6 +6,7 @@ from pages.components.cookie_component import CookieComponent
 from pages.components.footer_component import FooterComponent
 from pages.basket_page import BasketPage
 from pages.components.cart_modal_component import CartModalComponent
+from pages.components.checkout_register_login_modal_component import CheckoutRegisterLoginModalComponent
 from pages.home_page import HomePage
 from pages.login_page import LoginPage
 from pages.signup_page import SignupPage
@@ -15,7 +16,10 @@ from pages.contact_form_page import ContactFormPage
 from pages.tst_cases_page import TestCasesPage
 from pages.products_listing_page import ProductListingPage
 from pages.products_details_page import ProductDetailsPage
-from utils.data_generator import generate_new_user_data, get_correct_login_data, get_form_data, get_search_data, generate_user_email
+from pages.checkout_page import CheckoutPage
+from pages.payment_details_page import PaymentDetailsPage
+from pages.order_success_page import OrderSuccessPage
+from utils.data_generator import generate_new_user_data, get_correct_login_data, get_form_data, get_search_data, generate_user_email, get_credit_card_details
 
 
 @pytest.fixture(scope="session")
@@ -43,7 +47,7 @@ def footer(page: Page) -> FooterComponent:
     return FooterComponent(page)
 
 @pytest.fixture
-def basket(page: Page) -> BasketPage:
+def basket_page(page: Page) -> BasketPage:
     return BasketPage(page)
 
 @pytest.fixture
@@ -53,6 +57,10 @@ def cookie_modal(page: Page) -> CookieComponent:
 @pytest.fixture
 def cart_modal(page: Page) -> CartModalComponent:
     return CartModalComponent(page)
+
+@pytest.fixture
+def checkout_register_login_modal(page: Page) -> CheckoutRegisterLoginModalComponent:
+    return CheckoutRegisterLoginModalComponent(page)
 
 @pytest.fixture
 def home_page(page: Page, config: dict) -> HomePage:
@@ -91,6 +99,18 @@ def product_details_page(page: Page) -> ProductDetailsPage:
     return ProductDetailsPage(page)
 
 @pytest.fixture
+def checkout_page(page: Page) -> CheckoutPage:
+    return CheckoutPage(page)
+
+@pytest.fixture
+def payment_details_page(page: Page) -> PaymentDetailsPage:
+    return PaymentDetailsPage(page)
+
+@pytest.fixture
+def order_success_page(page: Page) -> OrderSuccessPage:
+    return OrderSuccessPage(page)
+
+@pytest.fixture
 def user_email() -> str:
     return generate_user_email()
 
@@ -109,3 +129,7 @@ def get_contact_form_data() -> dict:
 @pytest.fixture
 def get_search_term_data() -> dict:
     return get_search_data()
+
+@pytest.fixture
+def credit_card_details() -> dict:
+    return get_credit_card_details()

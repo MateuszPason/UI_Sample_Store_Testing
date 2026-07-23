@@ -31,3 +31,7 @@ def get_search_data() -> dict:
 def generate_user_email() -> str:
     uid = generate_random_uid()
     return f"testemail_{uid}@testemail.com"
+
+def get_credit_card_details() -> dict:
+    with open(DATA_DIR / "card_payment.json") as f:
+        return json.load(f)["card_details"]
