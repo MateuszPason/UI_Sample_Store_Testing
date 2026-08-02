@@ -23,6 +23,24 @@
     "correct_login_data": {
         "email": "automationtestingexercise@testing.com",
         "password": "automationtestingpassword",
-        "name": "AutomationTestingExercise"
-    }   
+        "name": "AutomationTestingExercise",
+        "title": "Mr.",
+        "date_of_birth": {
+            "day": "10",
+            "month": "January",
+            "year": "1999"
+        },
+        "address": {
+            "first_name": "Testing",
+            "last_name": "Testing",
+            "company": "Testing",
+            "line_1": "Testing",
+            "line_2": "Testing",
+            "country": "United States",
+            "state": "Testing",
+            "city": "Testing",
+            "zipcode": "5451 ED",
+            "mobile_number": "+1441563457"
+        }
+    }
 }
